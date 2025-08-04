@@ -11,7 +11,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: print
-      run: 'Runing build'
+      run: echo'Runing build'
         
   test:
      # The type of runner that the job will run on windows
@@ -19,7 +19,9 @@ jobs:
      # Steps represent a sequence of tasks that will be executed as part of the job
      steps:
       - name: print
-        run: echo 'Runing build
+        run: echo 'Runing build'
+      - name: print gap
+        run: echo 'Runing gap'
   deploy:
        # The type of runner that the job will run on windows
        runs-on: windows-latest
