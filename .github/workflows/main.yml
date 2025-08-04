@@ -1,6 +1,9 @@
 name: Required fields Workflow
-on: 
-  workflow_dispatch
+on:
+ pull_request:
+  types: [ opened , synchronized ]
+  branches: [ "main" ]
+  paths-ignore: 'docs/**'
 
 jobs:
   build:
