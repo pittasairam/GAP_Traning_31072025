@@ -5,7 +5,7 @@ on:
       - main 
       - devlop
     tags : 'v*'
-    paths : 'doc/**'
+    paths : 'src/**'
 
 jobs:
   build:
