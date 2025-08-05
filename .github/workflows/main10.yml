@@ -1,0 +1,28 @@
+name:  Checking the with GitHub event Changes
+on:   
+  push:
+    branches :
+      - main
+      - develop
+  pull_request :
+    types: [opened, synchronized]
+   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - if : ${{github.event_name }} = pull
+      run: echo 'Trigger By Push'
+        
+  test:
+     runs-on: windows-latest
+     steps:
+      - if : ${{github.event_name }} = pull
+        run: echo 'Trigger By Push'
+      - if : ${{github.event_name }} = pull_request
+        run: echo 'Trigger By Push'
+  deploy:
+       runs-on: windows-latest
+       steps:
+        - name: print
+          run: echo 'Runing build'
