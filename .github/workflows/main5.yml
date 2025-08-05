@@ -1,0 +1,22 @@
+name: Manual trigger from UI 
+on:   
+  workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print
+      run: echo 'Runing build'
+        
+  test:
+     runs-on: windows-latest
+     steps:
+      - name: print
+        run: echo 'Runing build'
+      - name: print gap
+        run: echo 'Runing gap'
+  deploy:
+       runs-on: windows-latest
+       steps:
+        - name: print
+          run: echo 'Runing build'
