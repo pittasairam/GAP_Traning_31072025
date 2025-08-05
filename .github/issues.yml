@@ -1,0 +1,22 @@
+name: Required fields Workflow
+on: issues
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print
+      run: echo 'Runing build'
+        
+  test:
+     runs-on: windows-latest
+     steps:
+      - name: print
+        run: echo 'Runing build'
+      - name: print gap
+        run: echo 'Runing gap'
+  deploy:
+       runs-on: windows-latest
+       steps:
+        - name: print
+          run: echo 'Runing build'
