@@ -1,4 +1,4 @@
-name: issues Test
+name: On issues Test
 on:   
   issues:
     types: [opened, closed]
