@@ -1,0 +1,29 @@
+name: Push Changes
+on:   
+  push:
+    branches :
+      - main
+     #- develop
+   #paths:
+     # - 'src/**'       # Only trigger if files in the 'src' folder change
+     # - '!docs/**' 
+   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print
+      run: echo 'Runing build'
+        
+  test:
+     runs-on: windows-latest
+     steps:
+      - name: print
+        run: echo 'Runing build'
+      - name: print gap
+        run: echo 'Runing gap'
+  deploy:
+       runs-on: windows-latest
+       steps:
+        - name: print
+          run: echo 'Runing build'
