@@ -1,0 +1,30 @@
+name: Pull Request Changes with all possible Event Filters 
+on:   
+  push:
+    branches :
+      - main 
+      - devlop
+    tags : [dev,prod]
+    paths : 'doc/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print
+      run: echo 'Runing build'
+        
+  test:
+     runs-on: windows-latest
+     steps:
+      - name: print
+        run: echo 'Runing build'
+      - name: print gap
+        run: echo 'Runing gap'
+  deploy:
+       runs-on: windows-latest
+       steps:
+        - name: print
+          run: echo 'Runing build'
+
+    
