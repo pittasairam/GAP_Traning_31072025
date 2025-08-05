@@ -1,4 +1,4 @@
-name : Handle Issue & its Events 
+name : Handle Issue Event and Its Activity Types
 on:   
   issues:
     types: [opened, closed]
