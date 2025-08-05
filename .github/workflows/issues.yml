@@ -1,7 +1,7 @@
-name: issues 
+name: issues Test
 on: 
-  issues:
-   types: [ opend ,closed ,assiged]
+  issues :
+   types : [ opend ,closed ]
    branch : main
   
    
