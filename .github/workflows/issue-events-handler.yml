@@ -1,4 +1,4 @@
-name: On issues Test
+name : Handle Issue & its Events 
 on:   
   issues:
     types: [opened, closed]
