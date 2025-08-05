@@ -1,4 +1,4 @@
-name: Pull Request Changes with all possible Event Filters 
+name: push Changes with all possible Event Filters 
 on:   
   push:
     branches :
