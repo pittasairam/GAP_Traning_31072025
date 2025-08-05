@@ -1,8 +1,8 @@
 name: issues Test
-on: 
-  issues :
-   types : [ opend ,closed ]
-   branch : main
+on:   
+  issues:
+    types: [opened, closed]
+    branch : main
   
    
 
