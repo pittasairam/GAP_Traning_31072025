@@ -2,8 +2,8 @@ name: pull request Changes
 on:   
   pull_request:
     types: [opened, synchronized]
-    branches :
-      - main
+   # branches :
+      #- main
     
 jobs:
   build:
