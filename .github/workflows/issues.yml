@@ -1,4 +1,4 @@
-name: Required fields Workflow
+name: issues 
 on: 
   issues:
    types: [ opend ,closed ,assiged]
