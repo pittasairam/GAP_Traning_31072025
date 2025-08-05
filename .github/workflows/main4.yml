@@ -3,10 +3,8 @@ on:
   push:
     branches :
       - main
-     #- develop
-   #paths:
-     # - 'src/**'       # Only trigger if files in the 'src' folder change
-     # - '!docs/**' 
+      - develop
+   
    
 jobs:
   build:
