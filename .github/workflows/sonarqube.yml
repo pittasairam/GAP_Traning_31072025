@@ -6,7 +6,10 @@ on:
 jobs:
   sonarqube-setup:
     runs-on: ubuntu-latest
-    steps:
+    steps:   
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Debug Token Presence
         run: |
           echo "Token length: ${#SONAR_TOKEN}"
