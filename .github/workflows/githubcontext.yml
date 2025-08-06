@@ -17,7 +17,7 @@ jobs:
            echo 'Target branch of the pull request in a workflow run ${{github.base_ref}}'
            echo 'Path on the runner to the file that sets environment variables from workflow commands ${{github.env}}'
            echo 'GitHub event Name ${{github.event_name}}'
-           echo 'GitHub event path ${{github.event_path}}'
+           #echo 'GitHub event path ${{github.event_path}}'
         - name : print about GitHub Context Job & Repository Details
           run : |
            echo 'GitHub job Id ${{github.job}}'
