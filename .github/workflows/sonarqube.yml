@@ -1,0 +1,16 @@
+name: SonarQube - Setup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sonarqube-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SonarQube Cloud Scan
+        uses: SonarSource/sonarcloud-github-action@v5.0.0
+        with:
+          scannerVersion: '7.0.2.4839'
+
+      - name: Print SonarQube version
+        run: sonar-scanner --version
