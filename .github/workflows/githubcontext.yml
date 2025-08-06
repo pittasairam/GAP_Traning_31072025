@@ -5,10 +5,30 @@ jobs:
      github-context : 
       runs-on: ubuntu-latest
       steps :
-        - name : print about GitHub Context
+        - name : print about GitHub Context Actions
           run : |
            echo 'GitHub action ${{github.action}}'
-           echo 'GitHub action ${{github.action}}'
-           echo 'GitHub action ${{github.action}}'
-           echo 'GitHub action ${{github.action}}'
+           echo 'GitHub action reference ${{github.action_ref}}'
+           echo 'GitHub action  repository name ${{github.action_repository}}'
+           echo 'GitHub action Status ${{github.action_status}}'
+        - name : print about GitHub Context Event Details
+          run : |
+           echo 'GitHub The account ID of the person ${{github.actor_id}}'
+           echo 'Target branch of the pull request in a workflow run ${{github.base_ref}}'
+           echo 'Path on the runner to the file that sets environment variables from workflow commands ${{github.env}}'
+           echo 'GitHub event Name ${{github.event_name}}'
+           echo 'GitHub event path ${{github.event_path}}'
+        - name : print about GitHub Context Job & Repository Details
+          run : |
+           echo 'GitHub job Id ${{github.job}}'
+           echo 'GitHub Path details ${{github.path}}'
+           echo 'The ID of the repository ${{github.repository_id}}'
+           echo 'The repository owner's account ID ${{github.repository_owner_id}}'
+        - name : print about GitHub Context  Repository Details
+          run : |
+           echo 'A unique number for each workflow run within a repository ${{github.run_id}}'
+           echo 'A unique number for each run of a particular workflow in a repository. This number begins at 1 for the workflow's first run, and increments with each new run ${{github.run_number}}'
+           echo 'A unique number for each attempt of a particular workflow run in a repository. ${{github.run_attempt}}'
+           echo 'The default working directory on the runner for steps ${{github.workspace}}'
+          
       
