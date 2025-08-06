@@ -1,0 +1,23 @@
+name:  GitHub Context with Usecases
+on:   
+  push:
+    #branches :
+     # - main
+     #- develop
+  pull_request :
+    types: [opened, synchronized]
+   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - if : ${{github.event_name }} = push
+      run: echo 'Trigger By Push event name ${{github.event_name }}'
+        
+  test:
+     runs-on: windows-latest
+     steps:
+      - if : ${{github.event_name }} = push
+        run: echo 'Trigger By Push event name ${{github.event_name}}'
+      - if : ${{github.event_name }} = pull_request
+        run: echo 'Trigger By Push event name ${{github.event_name }}'
