@@ -6,5 +6,9 @@ jobs:
       runs-on: ubuntu-latest
       steps :
         - name : print about GitHub Context
-          run : 'echo  test'
+          run : |
+           echo 'GitHub action ${{github.action}}'
+           echo 'GitHub action ${{github.action}}'
+           echo 'GitHub action ${{github.action}}'
+           echo 'GitHub action ${{github.action}}'
       
