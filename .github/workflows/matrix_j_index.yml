@@ -3,7 +3,7 @@ on:
   workflow_dispatch
 jobs:
   matrix-failfast-job:
-    runs-on: ${{matrix.os}}
+    
     strategy:
      fail-fast: false
      matrix:
@@ -16,6 +16,7 @@ jobs:
          java-version: 17
        - index: 0
          java-version: 21
+    runs-on: ${{matrix.os}}
     steps:
       - name: Setup Java JDK
         uses: actions/setup-java@v3.14.1
