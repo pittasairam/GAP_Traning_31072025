@@ -1,0 +1,25 @@
+name: Needs Context Changes
+on:   
+  push   
+   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print
+      run: echo 'Runing build'
+        
+  test:
+     needs: build
+     runs-on: windows-latest
+     steps:
+      - name: print
+        run: echo 'Runing build'
+      - name: print gap
+        run: echo 'Runing gap'
+  deploy:
+       needs: [build ,test ]
+       runs-on: windows-latest
+       steps:
+        - name: print
+          run: echo 'Runing build'
