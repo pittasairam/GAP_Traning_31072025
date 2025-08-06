@@ -14,4 +14,4 @@ jobs:
           distribution: 'oracle'
 
       - name: Print Java version
-        run: java --version
+        run: java -version
