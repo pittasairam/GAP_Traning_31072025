@@ -1,11 +1,10 @@
 name : GitHub Context 
 on :
-  workflow_dispatch 
-    jobs :
-    githubcontext : 
+  workflow_dispatch
+jobs:
+     github-context : 
       runs-on: ubuntu-latest
       steps :
         - name : print about GitHub Context
-          run :
-          -'|echo  test'
+          run : 'echo  test'
       
