@@ -3,10 +3,16 @@ name: outputs
 on: workflow_dispatch
 
 jobs:
-  outputs:
+  gen-msg:
     runs-on: ubuntu-latest
     outputs:
       greeting: ${{ steps.set_message.outputs.greeting }}
     steps:
       - id: set_message
         run: echo 'greeting=New world' >> $GITHUB_OUTPUT
+
+  dis-msg:
+    needs: gen-msg
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo '${{ needs.gen-msg.outputs.greeting }}'
