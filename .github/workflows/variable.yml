@@ -1,4 +1,4 @@
-name: Variable Creation (ENV)
+name: Variable Creation (ENV & VAR & Secrets)
 
 on:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
         run: |
           echo 'ENV STATE: ${{env.STATE}}'
           echo 'VAR STATE: ${{vars.STATE}}'
-          echo 'VAR STATE: ${{secrets.PASSWORD}}'
+          echo 'Secrets STATE: ${{secrets.PASSWORD}}'
           echo 'Job STATE: $STATE'
 
      
