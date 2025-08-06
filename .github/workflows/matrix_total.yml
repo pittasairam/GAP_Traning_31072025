@@ -1,0 +1,26 @@
+name: Matrix With Strategy Total jobs
+
+on:
+  workflow_dispatch
+
+jobs:
+  matrix-total-job:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - index: 0
+            total: 4
+            os: windows-latest
+            java-version: 17
+          - index: 1
+            os: ubuntu-latest
+            java-version: 21
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.14.1
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: 'corretto'
