@@ -23,7 +23,7 @@ jobs:
            echo 'GitHub job Id ${{github.job}}'
            echo 'GitHub Path details ${{github.path}}'
            echo 'The ID of the repository ${{github.repository_id}}'
-           echo 'The repository owner's account ID ${{github.repository_owner_id}}'
+           #echo 'The repository owner's account ID ${{github.repository_owner_id}}'
         - name : print about GitHub Context  Repository Details
           run : |
            echo 'A unique number for each workflow run within a repository ${{github.run_id}}'
