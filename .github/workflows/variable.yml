@@ -16,8 +16,9 @@ jobs:
         env:
           STATE: TS  # Step-level environment variable
         run: |
-          echo "Global STATE: ${{ env.STATE }}"
-          echo "Job STATE: $STATE"
+          echo 'ENV STATE: ${{ env.STATE }}'
+          echo 'VAR STATE: ${{ var.STATE }}'
+          echo 'Job STATE: $STATE'
 
      
       
