@@ -9,4 +9,4 @@ jobs:
       greeting: ${{ steps.set_message.outputs.greeting }}
     steps:
       - id: set_message
-        run: echo "greeting=New world" >> $GITHUB_OUTPUT
+        run: echo 'greeting=New world' >> $GITHUB_OUTPUT
