@@ -1,0 +1,6 @@
+name : Variable Creation (ENV) 
+on :
+  workflow_dispatch
+jobs:
+     github-context : 
+      runs-on: ubuntu-latest
