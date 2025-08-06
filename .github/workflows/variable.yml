@@ -18,6 +18,7 @@ jobs:
         run: |
           echo 'ENV STATE: ${{env.STATE}}'
           echo 'VAR STATE: ${{vars.STATE}}'
+          echo 'VAR STATE: ${{secrets.PASSWORD}}'
           echo 'Job STATE: $STATE'
 
      
