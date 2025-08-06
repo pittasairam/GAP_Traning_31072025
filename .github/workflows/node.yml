@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  java-setup:
+  node-js:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node.js environment
