@@ -1,6 +1,23 @@
-name : Variable Creation (ENV) 
-on :
-  workflow_dispatch
+name: Variable Creation (ENV)
+
+on:
+  workflow_dispatch:
+
+env:
+  STATE: Ap  # Global environment variable
+
 jobs:
-     github-context : 
-      runs-on: ubuntu-latest
+  variables:
+    runs-on: ubuntu-latest
+    env:
+      STATE: TG  # Job-level environment variable
+    steps:
+      - name: Print Environment Variables
+        env:
+          STATE: TS  # Step-level environment variable
+        run: |
+          echo "Global STATE: ${{ env.STATE }}"
+          echo "Job STATE: $STATE"
+
+     
+      
