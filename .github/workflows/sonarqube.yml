@@ -7,6 +7,13 @@ jobs:
   sonarqube-setup:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug Token Presence
+        run: |
+          echo "Token length: ${#SONAR_TOKEN}"
+        shell: bash
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: SonarQube Cloud Scan
         uses: SonarSource/sonarcloud-github-action@v5.0.0
         with:
