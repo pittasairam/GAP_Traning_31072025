@@ -57,11 +57,24 @@ jobs:
   test:
     name: Run Tests
     needs: java-setup-single
-    if: ${{ github.event_name == 'push' }}
     runs-on: windows-latest
     steps:
-      - name: Echo Event Name
+      - name: On Pull Request
+        if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
         run: echo 'Triggered by event ${{ github.event_name }}'
+      - name: On Workflow dispatch
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          echo 'Triggered by event ${{ github.event_name }}'
+
+  run-on-main-pr:
+    needs: [java-setup-single, test]
+    if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Target Branch
+        run: echo "This PR targets the main branch!"
+
 
     
 
