@@ -1,0 +1,87 @@
+
+name: GitHub Actions Usecases with All
+
+on:
+  #push:
+  pull_request:
+    types: [opened, synchronized]
+  workflow_dispatch:
+
+jobs:
+  java-setup:
+    name: Java Setup Matrix
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - index: 0
+            total: 4
+            os: ubuntu-latest
+            java: 17
+          - index: 1
+            total: 4
+            os: ubuntu-latest
+            java: 21
+          - index: 2
+            total: 4
+            os: windows-latest
+            java: 17
+          - index: 3
+            total: 4
+            os: windows-latest
+            java: 21
+
+    steps:
+      - name: Echo Tag Info
+        run: echo "Publishing release for tag ${{ github.ref }}"
+
+  audit:
+    name: Audit Trigger Info
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show Trigger Info
+        run: |
+          echo "Workflow triggered by: ${{ github.actor }}"
+          echo "Original trigger source: ${{ github.triggering_actor }}"
+
+  build:
+    name: Build on Push
+    runs-on: ubuntu-latest
+    steps:
+      - name: On Push Event
+        if: ${{ github.event_name == 'push' }}
+        run: echo "Triggered by Push event: ${{ github.event_name }}"
+
+  test:
+    name: Test on PR
+    runs-on: windows-latest
+    steps:
+      - name: Show PR Info
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          echo "Triggered by Pull Request event: ${{ github.event_name }}"
+          echo "PR title: ${{ github.event.pull_request.title }}"
+          echo "Opened by: ${{ github.event.pull_request.user.login }}"
+
+      - name: Deploy to Production
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: echo "Deploying to production!"
+
+  log-pr-info:
+    name: Log PR Info
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Production
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: echo "Deploying to production!"
+
+  docs-check:
+    name: Docs Commit Check
+    if: contains(github.event.head_commit.message, 'docs')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Docs Commit Detected
+        run: echo "This commit is related to docs"
