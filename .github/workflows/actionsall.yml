@@ -50,11 +50,11 @@ jobs:
 
       - name: Show Matrix Info
         run: |
-          echo "Running index ${{ matrix.index }}"
-          echo "OS: ${{ matrix.os }}, Java: ${{ matrix.java }}"
-          echo "MAVEN_OPTS: ${{ vars.MAVEN_OPTS }}"
-          echo "BUILD_PROFILE: ${{ vars.BUILD_PROFILE }}"
-          echo "API_TOKEN: ${{ secrets.API_TOKEN }}"
+          echo 'Running index ${{ matrix.index }}'
+          echo 'OS: ${{ matrix.os }}, Java: ${{ matrix.java }}'
+          echo 'MAVEN_OPTS: ${{ vars.MAVEN_OPTS }}'
+          echo 'BUILD_PROFILE: ${{ vars.BUILD_PROFILE }}'
+          echo 'API_TOKEN: ${{ secrets.API_TOKEN }}'
 
       - name: Build with Maven
         run: mvn clean install -P ${{ vars.BUILD_PROFILE }}
