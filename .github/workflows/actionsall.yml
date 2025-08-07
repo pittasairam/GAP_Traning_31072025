@@ -55,6 +55,7 @@ jobs:
           echo 'BUILD_PROFILE: ${{ env.MAVEN_TEST }}'
           echo 'BUILD_PROFILE: ${{ vars.BUILD_PROFILE }}'
           echo 'BUILD_PROFILE: ${{ env.BUILD_PROFILE_DEV }}'
+          echo 'BUILD_PROFILE: ${{ vars.MAVEN_OPTS}}'
           echo 'API_TOKEN: ${{ secrets.API_TOKEN }}'
 
     
