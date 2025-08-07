@@ -8,8 +8,8 @@ on:
 
 # Workflow-level variables
 env:
-  MAVEN_OPTS: "-Xmx1024m"
-  BUILD_PROFILE: "release"
+  MAVEN_TEST: "-Xmx1024m"
+  BUILD_PROFILE_DEV: "release"
 
 jobs:
   java-setup-single:
@@ -52,8 +52,9 @@ jobs:
         run: |
           echo 'Running index ${{ matrix.index }}'
           echo 'OS: ${{ matrix.os }}, Java: ${{ matrix.java }}'
-         
+          echo 'BUILD_PROFILE: ${{ env.MAVEN_TEST }}'
           echo 'BUILD_PROFILE: ${{ vars.BUILD_PROFILE }}'
+          echo 'BUILD_PROFILE: ${{ env.BUILD_PROFILE_DEV }}'
           echo 'API_TOKEN: ${{ secrets.API_TOKEN }}'
 
     
