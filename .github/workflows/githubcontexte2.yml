@@ -8,16 +8,54 @@ on:
     types: [opened, synchronized]
    
 jobs:
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Publishing release for tag ${{ github.ref }}"
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Workflow triggered by: ${{ github.actor }}"
+          echo "Original trigger source: ${{ github.triggering_actor }}"
+  
   build:
     runs-on: ubuntu-latest
     steps:
-    - if : ${{github.event_name }} = push
-      run: echo 'Trigger By Push event name ${{github.event_name }}'
+     - name: On Push event 
+       if : ${{github.event_name }} == 'push'
+       run: echo 'Trigger By Push event name ${{github.event_name }}'
         
   test:
      runs-on: windows-latest
-     steps:
-      - if : ${{github.event_name }} = push
-        run: echo 'Trigger By Push event name ${{github.event_name}}'
-      - if : ${{github.event_name }} = pull_request
-        run: echo 'Trigger By Push event name ${{github.event_name }}'
+     steps: 
+      - name: Show PR title
+        if : ${{github.event_name }} == 'pull_request'
+        run: |
+          -echo 'Trigger By pull request event name ${{github.event_name }}'
+           echo "PR title: ${{ github.event.pull_request.title }}"
+           echo "Opened by: ${{ github.event.pull_request.user.login }}"
+      - name: Deploy to production
+        if: github.ref == 'refs/heads/main'
+        run: echo "Deploying to production!"
+      - name: Comment on PR
+        run: |
+          curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{"body":"Thank you for the PR!"}' \
+            ${{ github.api_url }}/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
+  
+  log-pr-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        if: github.ref == 'refs/heads/main'
+        run: echo "Deploying to production!"
+  
+  docs-check:
+    if: contains(github.event.head_commit.message, 'docs')
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This commit is related to docs"
