@@ -48,11 +48,11 @@ jobs:
 
       - name: Show Matrix Info
         run: |
-          echo "Running index ${{ matrix.index }}"
-          echo "OS: ${{ matrix.os }}, Java: ${{ matrix.java }}"
-          echo "BUILD_PROFILE: ${{ env.MAVEN_TEST }}"
-          echo "BUILD_PROFILE_DEV: ${{ env.BUILD_PROFILE_DEV }}"
-          echo "API_TOKEN: ${{ secrets.API_TOKEN }}"
+          echo 'Running index ${{ matrix.index }}'
+          echo 'OS: ${{ matrix.os }}, Java: ${{ matrix.java }}'
+          echo 'BUILD_PROFILE: ${{ vars.BUILD_PROFILE }}'
+          echo 'BUILD_PROFILE_DEV: ${{ env.BUILD_PROFILE_DEV }}'
+          echo 'API_TOKEN: ${{ secrets.API_TOKEN }}'
 
   test:
     name: Run Tests
@@ -73,9 +73,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Target Branch
-        run: echo "This PR targets the main branch!"
+        run: |
+          echo "This PR targets the main branch!"
+          echo "BUILD_PROFILE: ${{ vars.BUILD_PROFILE }}"
+          
+  python-setup:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    runs-on: windows-latest
+    steps:
+     - name: Setup Python
+       uses: actions/setup-python@v5.6.0
+       with:
+         python-version: 3.13.5
+     - name: Print Python Version
+       run: python --version
 
-
+  event-on-push: 
+    runs-on: windows-latest
+    steps:
+    - name: Print Python Version
+      if: ${{ github.event_name == 'push' }}
+      run: python --version
+       echo "This PR targets the main branch!"
+    - name: workflow_dispatch
+      if: ${{ github.event_name == 'workflow_dispatch' }}
+      run: python --version
+       echo "This PR targets the main branch!"
     
 
     
